@@ -13,7 +13,7 @@ public class EventFilter extends AbsBaseComponent {
     @FindBy(xpath = "")
     private WebElement clickEventFilter;
 
-    public DropDownMenu popUpMenu() {
+    public DropDownMenu dropDownMenu() {
         clickEventFilter.click();
         return new DropDownMenu(driver);
     }

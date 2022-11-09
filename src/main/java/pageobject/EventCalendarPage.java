@@ -35,16 +35,17 @@ public class EventCalendarPage extends AbsPageObject {
 
 
 
-//    public LocalDate getStartEventData() {
-//
-//        List<String> dataText = webElementData.stream().map(WebElement::getText).collect(Collectors.toList());
-//        List<String> dataTime = webElementTime.stream().map(WebElement::getText).collect(Collectors.toList());
-//
-//        List<String> resaultDataStr = new ArrayList<>();
-//        for (int i = 0; i< dataText.size(); i++) {
-//
-//            resaultDataStr[i] =
-//        }
-//
-//    }
+    public LocalDate getStartEventData() {
+
+        List<String> dataText = webElementData.stream().map(WebElement::getText).collect(Collectors.toList());
+        List<String> dataTime = webElementTime.stream().map(WebElement::getText).collect(Collectors.toList());
+
+        List<String> resaultDataStr = new ArrayList<>();
+        for (int i = 0; i< dataText.size(); i++) {
+
+            resaultDataStr.add("9 Ноября");
+            resaultDataStr.add("" + "20:00");
+        }
+
+    }
 }

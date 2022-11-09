@@ -63,11 +63,10 @@ public class CourcePageTest {
 
 
         new CoursePage(driver)
-                .checkTitle(CourceInfoData.TITLE, "Java QA Engineer. Basic")
+                .checkTitle(CourceInfoData.TITLE)
                 .checkDescription(CourceInfoData.DISCRIPTION)
                 .checkDataCource(CourceInfoData.DURATIONOFTRANING)
                 .checkDataCource(CourceInfoData.FORMAT)
                 .checkDataCource(CourceInfoData.STARTLESSON);
-
     }
 }

@@ -22,7 +22,7 @@ public class CoursePage extends AbsBasePage {
     private String dataCources = "//*[contains(@class, 'course-header2-bottom__item')]//*[contains(text(), '%s')]";
 
 
-    public CoursePage checkTitle(CourceInfoData courceInfoData, String value) {
+    public CoursePage checkTitle(CourceInfoData courceInfoData) {
 
         String locator = String.format(title, courceInfoData.getName());
         String checkTitle = driver.findElement(By.cssSelector(locator))

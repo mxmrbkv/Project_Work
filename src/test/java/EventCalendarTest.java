@@ -58,7 +58,7 @@ public class EventCalendarTest {
                 .pageHeaderShouldBeSameAs("Календарь мероприятий");
 
         new EventFilter(driver)
-                .popUpMenu();
+                .dropDownMenu();
 
         new DropDownMenu(driver)
                 .clickOpenWebinar();
