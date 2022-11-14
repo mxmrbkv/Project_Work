@@ -1,6 +1,5 @@
 import components.ClickCourse;
 import components.MainMenuComponent;
-import data.CourceInfoData;
 import data.MainMenuItemsData;
 import data.cources.CourcesData;
 import driver.DriverFactory;
@@ -58,15 +57,18 @@ public class CourcePageTest {
                 .clickCourceByTesting(CourcesData.Testing)
                 .pageHeaderShouldBeSameAs(CourcesData.Testing.getName());
 
-        new ClickCourse(driver)
-                .clickCoursePage();
+        ClickCourse clickCourse = new ClickCourse(driver);
+        String startData = clickCourse.getStartCourceData(9);
+        clickCourse.clickCoursePage(9);
+        clickCourse.getPeriodOfStudy(9);
+
 
 
         new CoursePage(driver)
-                .checkTitle(CourceInfoData.TITLE)
-                .checkDescription(CourceInfoData.DISCRIPTION)
-                .checkDataCource(CourceInfoData.DURATIONOFTRANING)
-                .checkDataCource(CourceInfoData.FORMAT)
-                .checkDataCource(CourceInfoData.STARTLESSON);
+                .checkTitle("Java QA Engineer. Basic")
+                .checkDescription("Автоматизация тестирования на Java с нуля")
+                .checkDataCource( startData, 1)
+                .checkDataCource("Online", 2)
+                .checkDataCource(startData, 3);
     }
 }

@@ -1,11 +1,12 @@
 package pageobject;
 
-import data.CourceInfoData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.AbsBasePage;
+
+import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -19,41 +20,41 @@ public class CoursePage extends AbsBasePage {
 
     private String discription = "h1.course-header2__subtitle";
 
-    private String dataCources = "//*[contains(@class, 'course-header2-bottom__item')]//*[contains(text(), '%s')]";
+
+    @FindBy(css = "p.course-header2-bottom__item-text")
+    private List<WebElement> headerInfoTiles;
 
 
-    public CoursePage checkTitle(CourceInfoData courceInfoData) {
+    public CoursePage checkTitle(String value) {
 
-        String locator = String.format(title, courceInfoData.getName());
-        String checkTitle = driver.findElement(By.cssSelector(locator))
+        String checkTitle = driver.findElement(By.cssSelector(title))
                 .getText();
 
-        assertThat(checkTitle).as("Title of page should be {}",courceInfoData)
-                .isEqualTo(courceInfoData);
+        assertThat(checkTitle).as("Title of page should be {}", value)
+                .isEqualTo(value);
 
         return this;
     }
 
-    public CoursePage checkDescription(CourceInfoData courceInfoData) {
+    public CoursePage checkDescription(String value) {
 
-        String locator = String.format(discription, courceInfoData.getName());
-        String checkTitle = driver.findElement(By.cssSelector(locator))
+        String checkDescription = driver.findElement(By.cssSelector(discription))
                 .getText();
 
-        assertThat(checkTitle).as("Description of page should be {}",courceInfoData)
-                .isEqualTo(courceInfoData);
+        assertThat(checkDescription).as("Description of page should be {}",value)
+                .isEqualTo(value);
 
         return this;
     }
 
-    public CoursePage checkDataCource(CourceInfoData courceInfoData) {
+    public CoursePage checkDataCource(String value, int i) {
 
-        String locator = String.format(dataCources, courceInfoData.getName());
-        String checkTitle = driver.findElement(By.xpath(locator))
+
+        String checkDataCource = headerInfoTiles.get(--i)
                 .getText();
 
-        assertThat(checkTitle).as("Error: value in input field {} should be {}",courceInfoData)
-                .isEqualTo(courceInfoData);
+        assertThat(checkDataCource).as("Error: value should be {}",value)
+                .isEqualTo(value);
 
         return this;
     }

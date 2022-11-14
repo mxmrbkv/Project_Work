@@ -55,7 +55,7 @@ public class EventCalendarTest {
                 .clickEventCalendar(CourcesData.EventsCalendar);
 
         new EventCalendarPage(driver)
-                .pageHeaderShouldBeSameAs("Календарь мероприятий");
+                .checkEventData();
 
         new EventFilter(driver)
                 .dropDownMenu();
