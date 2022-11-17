@@ -24,42 +24,34 @@ public class TestingPageTest {
 
         WebDriverManager.chromedriver().setup();
     }
-
     @BeforeEach
-
     public void initDriver() throws NotSupportedException {
         this.driver = new DriverFactory().create(DriverManagerType.CHROME, null);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        logger.info("Driver installed");
     }
-
     @AfterEach
-
     public void close() {
         if(driver !=null) {
             driver.close();
             driver.quit();
         }
     }
-
     @Test
-
     public void testingPage() {
 
         new MainPage(driver)
                 .open("/");
+        logger.info("Open browser");
 
         new MainMenuComponent(driver)
                         .moveCursorToItem(MainMenuItemsData.Cources)
                         .clickCourceByTesting(CourcesData.Testing)
                         .pageHeaderShouldBeSameAs(CourcesData.Testing.getName());
+        logger.info("Course page is open");
 
         new CourcesTestingPage(driver)
                 .checkCourceTales(14);
-
+        logger.info("Number of courses current");
     }
-
-
-
-
-
 }

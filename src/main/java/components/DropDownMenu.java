@@ -3,7 +3,7 @@ package components;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageobject.FilteredWebinarPage;
+import pageobject.EventCalendarPage;
 
 public class DropDownMenu extends AbsBaseComponent {
 
@@ -14,8 +14,8 @@ public class DropDownMenu extends AbsBaseComponent {
     @FindBy(xpath = "//*[contains(@class, 'dod_new-events-dropdown_opened')] //a[@title='Открытый вебинар']")
     private WebElement openWebinar;
 
-    public FilteredWebinarPage clickOpenWebinar() {
+    public EventCalendarPage clickOpenWebinar() {
         openWebinar.click();
-        return new FilteredWebinarPage(driver);
+        return new EventCalendarPage(driver);
     }
 }

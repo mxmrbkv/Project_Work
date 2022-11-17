@@ -7,9 +7,7 @@ public enum CourcesData implements ICourcesData {
     CourcesData(String name) {
         this.name = name;
     }
-
     public String getName() {
         return this.name;
     }
-
 }

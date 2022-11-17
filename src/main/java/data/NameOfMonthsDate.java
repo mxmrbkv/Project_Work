@@ -26,7 +26,6 @@ public enum NameOfMonthsDate {
     public String getName() {
         return this.name;
     }
-
     public int getNum() {
         return this.num;
     }

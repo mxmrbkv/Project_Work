@@ -34,6 +34,7 @@ public class EventCalendarTest {
     public void initDriver() throws NotSupportedException {
         this.driver = new DriverFactory().create(DriverManagerType.CHROME, null);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        logger.info("Driver installed");
     }
 
     @AfterEach
@@ -49,19 +50,28 @@ public class EventCalendarTest {
 
         new MainPage(driver)
                 .open("/");
+        logger.info("Open browser");
 
         new MainMenuComponent(driver)
                 .moveCursorToItem(MainMenuItemsData.Developments)
                 .clickEventCalendar(CourcesData.EventsCalendar);
+        logger.info("Hover over event calendar");
 
         new EventCalendarPage(driver)
+                .getLoadOfEventStyle()
                 .checkEventData();
+        logger.info("Checking dates for upcoming events");
 
         new EventFilter(driver)
                 .dropDownMenu();
+        logger.info("Event filter openings");
 
         new DropDownMenu(driver)
                 .clickOpenWebinar();
+        logger.info("Clicking on an open webinar");
 
+        new EventCalendarPage(driver)
+                .checkFiltered();
+        logger.info("Сhecking the public webinar filter");
     }
 }

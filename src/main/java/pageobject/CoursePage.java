@@ -16,7 +16,7 @@ public class CoursePage extends AbsBasePage {
         super(driver);
     }
 
-    private String title = "course-header2__title";
+    private String title = ".course-header2__title";
 
     private String discription = "h1.course-header2__subtitle";
 
@@ -48,7 +48,6 @@ public class CoursePage extends AbsBasePage {
     }
 
     public CoursePage checkDataCource(String value, int i) {
-
 
         String checkDataCource = headerInfoTiles.get(--i)
                 .getText();

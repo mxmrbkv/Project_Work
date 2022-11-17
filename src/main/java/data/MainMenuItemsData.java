@@ -4,7 +4,6 @@ public enum MainMenuItemsData {
     Cources("Курсы"),
     Developments("События");
 
-
     private String name;
 
     MainMenuItemsData(String name) {

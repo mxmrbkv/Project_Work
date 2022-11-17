@@ -2,6 +2,8 @@ package pageobject;
 
 
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -27,10 +29,14 @@ public abstract class AbsPageObject {
     @FindBy(tagName = "h1")
     private WebElement header;
 
-
     public void pageHeaderShouldBeSameAs(String header) {
         assertThat(this.header.getText()).as("Header should be {%s}", header).isEqualTo(header);
 
     }
 
+    public void scrollPageToFooters() {
+
+        WebElement element = driver.findElement(By.cssSelector("footer.footer2"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 }

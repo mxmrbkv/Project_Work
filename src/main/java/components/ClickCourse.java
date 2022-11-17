@@ -3,7 +3,6 @@ package components;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import pageobject.CoursePage;
 
 public class ClickCourse extends AbsBaseComponent{
@@ -38,7 +37,6 @@ public class ClickCourse extends AbsBaseComponent{
         WebElement tile = driver.findElement(By.cssSelector(selector));
         String periodData = tile.findElement(By.xpath(".//div[@class = 'lessons__new-item-time']"))
                 .getText();
-
 
         return periodData;
     }

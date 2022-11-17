@@ -20,7 +20,8 @@ public class MainMenuComponent extends AbsBaseComponent {
     private String subMenuTemplateLocator = mainMenuTemplateLocator + "//a[@title='%s']";
 
     public MainMenuComponent moveCursorToItem(MainMenuItemsData mainMenuItemsData) {
-        String locator =  String.format(mainMenuTemplateLocator, mainMenuItemsData.getName());
+        String locator =  String.format(mainMenuTemplateLocator, mainMenuItemsData
+                .getName());
 
         WebElement mainMenu = driver.findElement(By.xpath(locator));
         actions
@@ -31,10 +32,12 @@ public class MainMenuComponent extends AbsBaseComponent {
 
     public CourcesTestingPage clickCourceByTesting(ICourcesData courcesData) {
 
-        String locator = String.format(mainMenuITemLocator, CourcesData.Testing.getName());
+        String locator = String.format(mainMenuITemLocator, CourcesData.Testing
+                .getName());
         WebElement subMenu = driver.findElement(By.xpath(locator));
 
-        String courcesLocator = String.format(subMenuTemplateLocator, courcesData.getName());
+        String courcesLocator = String.format(subMenuTemplateLocator, courcesData
+                .getName());
 
         actions
                 .moveToElement(subMenu)
@@ -45,10 +48,12 @@ public class MainMenuComponent extends AbsBaseComponent {
 
     public EventCalendarPage clickEventCalendar(ICourcesData courcesData) {
 
-        String locator = String.format(mainMenuITemLocator, CourcesData.EventsCalendar.getName());
+        String locator = String.format(mainMenuITemLocator, CourcesData.EventsCalendar
+                .getName());
         WebElement subMenu = driver.findElement(By.xpath(locator));
 
-        String courcesLocator = String.format(subMenuTemplateLocator, courcesData.getName());
+        String courcesLocator = String.format(subMenuTemplateLocator, courcesData
+                .getName());
 
         actions
                 .moveToElement(subMenu)

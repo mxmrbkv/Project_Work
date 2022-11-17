@@ -1,9 +1,12 @@
 package pageobject;
 
 import data.NameOfMonthsDate;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -30,14 +33,16 @@ public class EventCalendarPage extends AbsPageObject {
     @FindBy(css = ".dod_new-event__clock-icon ~ .dod_new-event__date-text")
     private List<WebElement> webElementTime;
 
+    @FindBy(css = "div.dod_new-type__text")
+    private List <WebElement> eventFilter;
+
+    private static int eventTilesNum = 0;
 
     public void pageHeaderShouldBeSameAs(String header) {
         assertThat(this.header.getText())
                 .as("Header should be {%s}", header)
                 .isEqualTo(header);
     }
-
-
 
     private List<LocalDateTime> getStartEventData() {
 
@@ -49,7 +54,6 @@ public class EventCalendarPage extends AbsPageObject {
 
             resaultDataStr.add(i, dataText.get(i) + " " + LocalDate.now().getYear() + " " + dataTime.get(i));
         }
-
 
         return resaultDataStr.stream().map(dataStr -> {
             String[] strSplit = dataStr.split("\\s+");
@@ -78,5 +82,28 @@ public class EventCalendarPage extends AbsPageObject {
         }
 
         return -1;
+    }
+
+    public EventCalendarPage getLoadOfEventStyle() {
+
+       int i = 0;
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 5);
+        while (i<10 && eventTilesNum < driver.findElements(By.cssSelector("a.dod_new-event")).size()) {
+
+            i++;
+            eventTilesNum = driver.findElements(By.cssSelector("a.dod_new-event")).size();
+            scrollPageToFooters();
+
+            webDriverWait.until(ExpectedConditions.not(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.dod_new-loader")))));
+        }
+
+        return this;
+    }
+
+    public EventCalendarPage checkFiltered() {
+
+        assertThat(eventFilter.size()).as("It should be {}", eventTilesNum).isEqualTo(eventTilesNum);
+
+        return this;
     }
 }

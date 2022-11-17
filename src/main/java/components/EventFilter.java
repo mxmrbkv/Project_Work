@@ -10,7 +10,7 @@ public class EventFilter extends AbsBaseComponent {
         super(driver);
     }
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//div[@class='dod_new-events-dropdown__input'][.//*[contains(text(), 'Все мероприятия')]]")
     private WebElement clickEventFilter;
 
     public DropDownMenu dropDownMenu() {

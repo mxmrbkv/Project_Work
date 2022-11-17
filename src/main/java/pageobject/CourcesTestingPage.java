@@ -26,7 +26,4 @@ public class CourcesTestingPage extends AbsBasePage {
 
         return this;
     }
-
-
-
 }
